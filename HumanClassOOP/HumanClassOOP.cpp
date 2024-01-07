@@ -63,6 +63,119 @@ private:
     std::string post; //ну типа этот, ну эээ, блин, как его, а, да, Должность!
 };
 
+//Ну, поехали
+class Vehicle {
+public:
+    Vehicle(std::string name, int capacity) {
+        this->name = name;
+        this->capacity = capacity;
+    }
+
+    int getCapacity() {
+        return capacity;
+    }
+    void setCapacity(int newCapacity) {
+        capacity = newCapacity;
+    }
+
+    std::string getName() {
+        return name;
+    }
+    void setName(std::string newName) {
+        name = newName;
+    }
+
+    virtual void printMe() {
+        std::cout << "Name: " << name << "\nCapacity: " << capacity << std::endl << std::endl;
+    }
+private:
+    int capacity;
+    std::string name;
+};
+
+class Ship : public Vehicle {
+public:
+    Ship(std::string name, int capacity, int waterSpeed) : Vehicle(name, capacity) {
+        this->waterSpeed = waterSpeed;
+    }
+
+    int getWaterSpeed() {
+        return waterSpeed;
+    }
+    void setWaterSpeed(int newWaterSpeed) {
+        waterSpeed = newWaterSpeed;
+    }
+
+    void printMe() override {
+        std::cout << "Name: " << getName()<< "\nCapacity: " << getCapacity() << "\nWater speed: " << waterSpeed << std::endl << std::endl;
+    }
+private:
+    int waterSpeed;
+};
+
+class Car : public Vehicle {
+public:
+    Car(std::string name, int capacity, int groundSpeed) : Vehicle(name, capacity) {
+        this->groundSpeed = groundSpeed;
+    }
+
+    int getGroundSpeed() {
+        return groundSpeed;
+    }
+    void setGroundSpeed(int newGroundSpeed) {
+        groundSpeed = newGroundSpeed;
+    }
+
+    void printMe() override {
+        std::cout << "Name: " << getName() << "\nCapacity: " << getCapacity() << "\nGround speed: " << groundSpeed << std::endl << std::endl;
+    }
+private:
+    int groundSpeed;
+};
+
+class Helicopter : public Car {
+public:
+    Helicopter(std::string name, int capacity, int groundSpeed, int airSpeed) : Car(name, capacity, groundSpeed) {
+        this->airSpeed = airSpeed;
+    }
+
+    int getAirSpeed() {
+        return airSpeed;
+    }
+    void setAirSpeed(int newAirSpeed) {
+        airSpeed = newAirSpeed;
+    }
+
+    void printMe() override {
+        std::cout << "Name: " << getName() << "\nCapacity: " << getCapacity() << "\nGround speed: " << getGroundSpeed() << "\nAir Speed: " << airSpeed << std::endl << std::endl;
+    }
+private:
+    int airSpeed;
+};
+
+class Tank : public Car {
+public:
+    Tank(std::string name, int capacity, int groundSpeed, int firePower) : Car(name, capacity, groundSpeed) {
+        this->firePower = firePower;
+    }
+
+    int getFirePower() {
+        return firePower;
+    }
+    void setFirePower(int newFirePower) {
+        firePower = newFirePower;
+    }
+
+    void printMe() override {
+        std::cout << "Name: " << getName() << "\nCapacity: " << getCapacity() << "\nGround speed: " << getGroundSpeed() << "\nFire Power: " << firePower << std::endl << std::endl;
+    }
+private:
+    int firePower;
+};
+
+
+
+
 int main() {
     Human first("Adam", 0, 25);
     Human second("Eve", 1, 20);
@@ -75,4 +188,7 @@ int main() {
     third.printMe();
     first.printMe();
     second.printMe();
+
+    Tank myLovelyTank("Rat", 6, 30, 100);
+    myLovelyTank.printMe();
 }
