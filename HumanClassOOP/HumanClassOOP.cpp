@@ -204,6 +204,28 @@ private:
     bool isHungry;
 };
 
+//Interface
+class Printer {
+public:
+    virtual void printMe() = 0;
+};
+
+//AbstractClass
+class HelloThing : public Printer {
+public:
+    void printMe() override {
+        std::cout << "Hiiii" << std::endl;
+    }
+    virtual void someMethod() = 0;
+};
+
+class ChildOfHelloThing : public HelloThing {
+public:
+    void someMethod() override {
+        std::cout << "Byeee" << std::endl;
+    }
+};
+
 
 int main() {
     Human first("Adam", 0, 25);
@@ -223,4 +245,8 @@ int main() {
 
     Horse myLovelyHorse("Apple", 2, 60, true);
     myLovelyHorse.printMe();
+
+    ChildOfHelloThing idk;
+    idk.printMe();
+    idk.someMethod();
 }
