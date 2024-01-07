@@ -31,9 +31,32 @@ private:
     int age;
 };
 
+class Worker : Human {
+public:
+    Worker(std::string name, bool gender, int age, int salary, std::string post) : Human(name, gender, age) {
+        this->salary = salary;
+        this->post = post;
+    }
 
-int main()
-{
+    int getSalary() {
+        return salary;
+    }
+    void setSalary(int newSalary) {
+        salary = newSalary;
+    }
+    std::string getPost() {
+        return post;
+    }
+    void setPost(std::string newPost) {
+        post = newPost;
+    }
+private:
+    int salary;
+    std::string post; //ну типа этот, ну эээ, блин, как его, а, да, Должность!
+};
+
+int main() {
     Human first("Adam", 0, 25);
     Human second("Eve", 1, 20);
+    Worker third("John", 0, 54, 90000, "Boss");
 }
