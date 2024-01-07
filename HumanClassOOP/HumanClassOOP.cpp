@@ -7,6 +7,24 @@ public:
         this->gender = gender;
         this->age = age;
     }
+    std::string getName() {
+        return name;
+    }
+    void setName(std::string newName) {
+        name = newName;
+    }
+    bool getGender() {
+        return gender;
+    }
+    void setGender(bool newGender) {
+        gender = newGender;
+    }
+    int getAge() {
+        return age;
+    }
+    void setAge(int newAge) {
+        age = newAge;
+    }
 private:
     std::string name;
     bool gender; //0 - male, 1 - female
