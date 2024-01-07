@@ -1,6 +1,18 @@
 ﻿#include <iostream>
 
-class Human {
+class Creature {
+public:
+    bool getIsAlive() {
+        return isAlive;
+    }
+    void setIsAlive(bool newIsAlive) {
+        isAlive = newIsAlive;
+    }
+private:
+    bool isAlive = true;
+};
+
+class Human : public Creature {
 public:
     Human(std::string name, bool gender, int age) {
         this->name = name;
@@ -173,7 +185,24 @@ private:
     int firePower;
 };
 
+class Horse : public Creature, public Car {
+public:
+    Horse(std::string name, int capacity, int groundSpeed, bool isHungry) : Car(name, capacity, groundSpeed) {
+        this->isHungry = isHungry;
+    }
 
+    bool getIsHungry() {
+        return isHungry;
+    }
+    void setIsHungry(bool newIsHungry) {
+        isHungry = newIsHungry;
+    }
+    void printMe() override {
+        std::cout << "Name: " << getName() << "\nCapacity: " << getCapacity() << "\nGround Speed: " << getGroundSpeed() << "\nIs it hungry? - " << (isHungry == 1 ? "Yes" : "No") << std::endl << std::endl;
+    }
+private:
+    bool isHungry;
+};
 
 
 int main() {
@@ -191,4 +220,7 @@ int main() {
 
     Tank myLovelyTank("Rat", 6, 30, 100);
     myLovelyTank.printMe();
+
+    Horse myLovelyHorse("Apple", 2, 60, true);
+    myLovelyHorse.printMe();
 }
